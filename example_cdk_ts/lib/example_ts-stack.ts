@@ -8,6 +8,7 @@ import {
   aws_dynamodb as dynamodb,
   aws_lambda as lambda,
   aws_apigateway as apigw,
+  aws_ec2 as ec2,
 } from "aws-cdk-lib";
 
 export class ExampleTsStack extends Stack {
@@ -38,6 +39,12 @@ export class ExampleTsStack extends Stack {
         contentDisposition: "inline",
       }
     );
+
+    new cdk.CfnOutput(this, 'bucket_endpoint', {
+      value: myBucket.bucketWebsiteDomainName,
+      description: 'The web endpoint of the bucket',
+      exportName: 'bucketEndpoint'
+    })
 
     // API Gateway with dynamoDB
 
@@ -79,5 +86,10 @@ export class ExampleTsStack extends Stack {
     helloApi.root
       .resourceForPath("hello")
       .addMethod("GET", new apigw.LambdaIntegration(getHelloFunction));
+
+    // Others
+
+    const getExistingVpc = ec2.Vpc.fromLookup(this, 'ImportVPC', {isDefault: true});
+    new cdk.CfnOutput(this, "MyVpc", {value: getExistingVpc.vpcId });
   }
 }
