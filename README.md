@@ -11,6 +11,7 @@ CDK adds default tags to resoures to track them on their Cloud Formation Stack. 
 
 Commands:
 
+```bash
 terraform init
 terraform plan
 terraform apply
@@ -31,7 +32,7 @@ pulumi up --refresh
 pulumi destroy
 pulumi stack
 pulumi stack output
-
+```
 
 TODO:
 
