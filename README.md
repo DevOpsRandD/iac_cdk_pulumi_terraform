@@ -40,8 +40,6 @@ pulumi import aws:s3/bucket:Bucket temp-bucket temp-bucket-rand
 
 TODO:
 
-Terraform is a declarative language, CDK is also imperative, what would be the advantages?
-
 Cases where changes implies destroy and create:
     - TMNA case -> increment root disk space
 
