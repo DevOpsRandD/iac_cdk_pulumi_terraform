@@ -126,3 +126,7 @@ const site = new awsx.apigateway.API("helloApi", {
 });
 
 export const siteUrl = site.url;
+
+
+const getExistingVpc = aws.ec2.getVpcOutput({ id: 'vpc-e6246881' });
+export const vpcArn = getExistingVpc.arn;

@@ -89,7 +89,7 @@ export class ExampleTsStack extends Stack {
 
     // Others
 
-    const getExistingVpc = ec2.Vpc.fromLookup(this, 'ImportVPC', {isDefault: true});
-    new cdk.CfnOutput(this, "MyVpc", {value: getExistingVpc.vpcId });
+    const getExistingVpc = ec2.Vpc.fromLookup(this, 'ImportVPC', {vpcId: 'vpc-e6246881'});
+    new cdk.CfnOutput(this, "vpcArn", {value: getExistingVpc.vpcArn });
   }
 }

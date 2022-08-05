@@ -1,6 +1,6 @@
 Terraform vs CDK vs Pulumi
 
-Terraform, unlike CDK, manages the its infrastructure state, it gets the data from each resource of the last deployed state and compares it with current infrastructure which migth has mannual changes. If so, Terraform would change it as desired in the code, CDK would not detect mannual changes as it only compares the last deployed Cloud Formation yml with current one. When working with a cloud account where role restrictions does not allow mannual changes this could not affect in nothing, regarding our side.
+Terraform, unlike CDK, manages its infrastructure state, it gets the data from each resource of the last deployed state and compares it with current infrastructure which migth has mannual changes. If so, Terraform would change it as desired in the code, CDK would not detect mannual changes as it only compares the last deployed Cloud Formation yml with current one. When working with a cloud account where role restrictions does not allow mannual changes this could not affect in nothing, regarding our side.
 
 pulumi requieres the access keys as env vars, not enough with aws configured
 
@@ -17,6 +17,8 @@ terraform plan
 terraform apply
 terraform destroy
 terraform state list
+terraform import aws_s3_bucket.temp-bucket temp-bucket-rand
+terraform state show aws_s3_bucket.temp-bucket
 
 cdk init --language typescript
 cdk bootstrap
@@ -27,11 +29,13 @@ cdk destroy
 
 pulumi login
 pulumi new aws-typescript
+pulumi preview
 pulumi up
 pulumi up --refresh
 pulumi destroy
 pulumi stack
 pulumi stack output
+pulumi import aws:s3/bucket:Bucket temp-bucket temp-bucket-rand 
 ```
 
 TODO:
