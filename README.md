@@ -30,6 +30,7 @@ cdk destroy
 pulumi login
 pulumi new aws-typescript
 pulumi preview
+npm install
 pulumi up
 pulumi up --refresh
 pulumi destroy

@@ -7,10 +7,10 @@ __pycache__
 .venv
 *.egg-info
 *.pyc
-*.js
 !jest.config.js
 *.d.ts
 node_modules
+*.zip
 
 # CDK asset staging directory
 .cdk.staging
