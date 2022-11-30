@@ -2,7 +2,7 @@ Terraform vs CDK vs Pulumi
 
 Terraform, unlike CDK, manages its infrastructure state, it gets the data from each resource of the last deployed state and compares it with current infrastructure which migth has mannual changes. If so, Terraform would change it as desired in the code, CDK would not detect mannual changes as it only compares the last deployed Cloud Formation yml with current one. When working with a cloud account where role restrictions does not allow mannual changes this could not affect in nothing, regarding our side.
 
-pulumi requieres the access keys as env vars, not enough with aws configured
+cdk requieres the access keys as env vars, not enough with aws configured
 
 CDK is just a wrapper around CloudFormation that enables us to write our infrastructure as code using a programming language (TypeScript, Python, Java ...), rather than a configuration language (yaml, json)
 
@@ -20,23 +20,30 @@ terraform state list
 terraform import aws_s3_bucket.temp-bucket temp-bucket-rand
 terraform state show aws_s3_bucket.temp-bucket
 
+
+pulumi new aws-typescript # To create project from ts template
+npm install
+pulumi login
+pulumi preview
+pulumi up
+pulumi up --refresh
+pulumi destroy
+pulumi stack
+pulumi stack output
+pulumi import aws:s3/bucket:Bucket temp-bucket temp-bucket-rand
+
+#To use s3 as backend:
+aws s3api create-bucket --bucket pulumi-state-rand
+aws s3api put-bucket-versioning --bucket pulumi-state-rand --versioning-configuration Status=Enabled
+pulumi login s3://pulumi-state-rand
+
+
 cdk init --language typescript
 cdk bootstrap
 cdk synth
 cdk diff
 cdk deploy
 cdk destroy
-
-pulumi login
-pulumi new aws-typescript
-pulumi preview
-npm install
-pulumi up
-pulumi up --refresh
-pulumi destroy
-pulumi stack
-pulumi stack output
-pulumi import aws:s3/bucket:Bucket temp-bucket temp-bucket-rand 
 ```
 
 TODO:
