@@ -1,3 +1,7 @@
 name: example_pulumi_ts
 runtime: nodejs
 description: A minimal AWS TypeScript Pulumi program
+encryptionsalt: v1:vlv+A2ssgYI=:v1:ZZsHA2h1uDHh+JuN:b25Wj/QXXBBaHDR53WCi/N1oIPwDtw==
+config:
+  aws:region: us-east-1
+

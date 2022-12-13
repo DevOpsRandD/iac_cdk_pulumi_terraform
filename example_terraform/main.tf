@@ -202,3 +202,7 @@ resource "aws_api_gateway_stage" "stage" {
 output "site_url" {
   value = format("%s%s/%s",aws_api_gateway_deployment.deployment.invoke_url,aws_api_gateway_stage.stage.stage_name, aws_api_gateway_resource.resource.path_part)
 }
+
+# resource "aws_s3_bucket" "temp-bucket" { // for demo
+  
+# }
